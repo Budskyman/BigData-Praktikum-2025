@@ -1,0 +1,9 @@
+# Run MongoDB container
+docker run -d -p 27017:27017 --name mongodb mongo:latest
+
+# Masuk MongoDB shell
+docker exec -it mongodb mongosh
+
+# Cek status containers
+docker ps
+docker ps -a
