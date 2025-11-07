@@ -1,0 +1,16 @@
+# Pull dan run Hadoop container
+docker pull harisekhon/hadoop:2.8
+docker run -it -p 50070:50070 harisekhon/hadoop:2.8 /bin/bash
+
+# Di dalam container - HDFS setup
+$HADOOP_HOME/sbin/start-dfs.sh
+hdfs namenode -format
+jps
+
+# HDFS operations (simulasi)
+hdfs dfs -mkdir /praktikum
+echo "id,nama,jurusan" > sample.csv
+echo "1,Andi,Informatika" >> sample.csv
+hdfs dfs -put sample.csv /praktikum/
+hdfs dfs -ls /praktikum
+hdfs dfs -cat /praktikum/sample.csv
